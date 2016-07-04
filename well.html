@@ -1,0 +1,19 @@
+<dom-module id="bs-well">
+  <template>
+    <div class$="well well-{{size}}">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-well',
+      properties: {
+        size: {
+          type: String,
+          value: 'md'
+        }
+      }
+    })
+  </script>
+</dom-module>

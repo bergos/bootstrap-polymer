@@ -1,0 +1,49 @@
+<dom-module id="bs-button">
+  <template>
+    <button id="button" class$="btn btn-{{type}}"><content></content></button>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-button',
+      properties: {
+        onclick: Function,
+        type: {
+          value: 'default'
+        }
+      }
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-button-toggle">
+  <template>
+    <button id="button" class$="btn btn-{{type}} {{activeClass}}" data-toggle="button" aria-pressed="{{active}}"><content></content></button>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-button-toggle',
+      properties: {
+        active: {
+          type: Boolean,
+          notify: true
+        },
+        activeClass: String,
+        type: {
+          value: 'default'
+        }
+      },
+      ready: function() {
+        this.activeClass = this.active ? 'active' : ''
+      },
+      listeners: {
+        'click': 'updateActive',
+      },
+      updateActive: function() {
+        this.active = this.$.button.className.indexOf('active') === -1
+        this.fire('change', {active: this.active})
+      }
+    })
+  </script>
+</dom-module>

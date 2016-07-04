@@ -1,0 +1,90 @@
+<dom-module id="bs-tab-list">
+  <template>
+    <ul class="nav nav-tabs" role="tablist">
+      <template is="dom-repeat" items="{{tabs}}" as="tab">
+        <li role="presentation" class$="{{isActive(tab)}}">
+          <a href="#{{tab.id}}" aria-controls="{{tab.id}}" role="tab" data-toggle="tab" on-click="handleClick" data-tab-id="{{tab.id}}">{{tab.name}}</a>
+        </li>
+      </template>
+    </ul>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-tab-list',
+      properties: {
+        active: String,
+        tabs: Array
+      },
+      isActive: function (tab) {
+        return this.active === tab.id ? 'active' : ''
+      },
+      handleClick: function (event) {
+        this.setTabPaneActive(this.active, false)
+        this.active = event.target.dataTabId
+        this.setTabPaneActive(this.active, true)
+      },
+      setTabPaneActive(id, active) {
+        var tabPane = document.getElementById(id)
+
+        if (tabPane) {
+          tabPane.active = active
+        }
+      }
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-tab-pane">
+  <template>
+    <div role="tabpanel" class="tab-pane" style$="{{displayStyle}}">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-tab-pane',
+      properties: {
+        active: {
+          type: Boolean,
+          notify: true
+        },
+        displayStyle: String
+      },
+      listeners: {
+        'active-changed': 'updateActive'
+      },
+      ready: function() {
+        this.updateActive()
+      },
+      updateActive: function () {
+        this.displayStyle = this.active ? '' : 'display: none;'
+      }
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-tab-panel">
+  <template>
+    <div role="tabpanel">
+      <bs-tab-list active="{{active}}" tabs="{{tabs}}"></bs-tab-list>
+
+      <div class="tab-content">
+        <content></content>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-tab-panel',
+      properties: {
+        active: {
+          type: String
+        },
+        tabs: Array
+      }
+    })
+  </script>
+</dom-module>

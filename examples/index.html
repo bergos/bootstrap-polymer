@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>examples</title>
+
+  <script src="../node_modules/webcomponentsjs/lite.js"></script>
+
+  <link rel="import" href="../index.html">
+</head>
+<body>
+  <bs-container-fluid>
+    <bs-row>
+      <bs-column span="6" offset="3">
+        <h1>Button</h1>
+        <bs-button id="button-default">Default</bs-button>
+        <bs-button type="primary">Primary</bs-button>
+        <bs-button-toggle id="button-toggle">Toggle</bs-button-toggle>
+        <bs-button-toggle active="true">Toggle (active)</bs-button-toggle>
+
+        <h1>Form</h1>
+        <bs-form-horizontal>
+          <bs-form-group-horizontal label="Text" for="inputText3">
+            <bs-text id="inputText3" placeholder="Text"></bs-text>
+          </bs-form-group-horizontal>
+          <bs-form-group-horizontal label="Email" for="inputEmail3">
+            <bs-email id="inputEmail3" placeholder="Email"></bs-email>
+          </bs-form-group-horizontal>
+          <bs-form-group-horizontal label="Password" for="inputPassword3">
+            <bs-password id="inputPassword3" placeholder="Password"></bs-password>
+          </bs-form-group-horizontal>
+          <bs-form-group-horizontal>
+            <bs-checkbox> Remember me</bs-checkbox>
+          </bs-form-group-horizontal>
+          <bs-form-group-horizontal>
+            <bs-button>Sign in</bs-button>
+          </bs-form-group-horizontal>
+        </bs-form-horizontal>
+
+        <h1>Well</h1>
+        <bs-well>Default well</bs-well>
+        <bs-well size="sm">Small well</bs-well>
+        <bs-well size="lg">Large well</bs-well>
+
+        <h1>Tab</h1>
+        <bs-tab-panel active="home" tabs='[{"id": "home", "name": "Home"}, {"id": "profile", "name": "Profile"}]'>
+          <bs-tab-pane active="true" id="home">
+            <h2>Home</h2>
+          </bs-tab-pane>
+          <bs-tab-pane id="profile">
+            <h2>Profile</h2>
+          </bs-tab-pane>
+        </bs-tab-panel>
+      </bs-column>
+    </bs-row>
+  </bs-container-fluid>
+</body>
+</html>

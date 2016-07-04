@@ -1,0 +1,41 @@
+<dom-module id="bs-row">
+  <template>
+    <div class="row">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-row'
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-column">
+  <template>
+    <div class$="col-{{size}}-{{span}} col-{{size}}-offset-{{offset}}">
+      <content></content>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-column',
+      properties: {
+        size: {
+          type: String,
+          value: 'md'
+        },
+        span: {
+          type: Number,
+          value: 12
+        },
+        offset: {
+          type: Number,
+          value: 0
+        }
+      }
+    })
+  </script>
+</dom-module>

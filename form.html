@@ -1,0 +1,116 @@
+<dom-module id="bs-checkbox">
+  <template>
+    <div class$="checkbox {{disabledClass}}">
+      <label>
+        <input type="checkbox" disabled="{{readonly}}"> <content></content>
+      </label>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-checkbox',
+      properties: {
+        readonly: Boolean,
+        disabledClass: String
+      },
+      ready: function() {
+        this.disabledClass = this.readonly ? 'disabled' : ''
+      },
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-email">
+  <template>
+    <input type="email" class="form-control" placeholder="{{placeholder}}">
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-email',
+      properties: {
+        placeholder: String
+      }
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-form-horizontal">
+  <template>
+    <form class="form-horizontal">
+      <content></content>
+    </form>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-form-horizontal'
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-form-group-horizontal">
+  <template>
+    <div class="form-group">
+      <label for="{{for}}" class$="col-{{size}}-{{span}} control-label">{{label}}</label>
+      <div class$="col-{{size}}-{{inputSpan}}">
+        <content></content>
+      </div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-form-group-horizontal',
+      properties: {
+        for: String,
+        label: String,
+        size: {
+          type: String,
+          value: 'md'
+        },
+        span: {
+          type: Number,
+          value: 2
+        },
+        inputSpan: Number
+      },
+      ready: function() {
+        this.inputSpan = 12 - this.span
+      }
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-password">
+  <template>
+    <input type="password" class="form-control" placeholder="{{placeholder}}">
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-password',
+      properties: {
+        placeholder: String
+      }
+    })
+  </script>
+</dom-module>
+
+<dom-module id="bs-text">
+  <template>
+    <input type="text" class="form-control" placeholder="{{placeholder}}" readonly$="{{readonly}}" value="{{value}}">
+  </template>
+
+  <script>
+    Polymer({
+      is: 'bs-text',
+      properties: {
+        placeholder: String,
+        readonly: Boolean,
+        value: String
+      }
+    })
+  </script>
+</dom-module>
