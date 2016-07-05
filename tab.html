@@ -3,7 +3,7 @@
     <ul class="nav nav-tabs" role="tablist">
       <template is="dom-repeat" items="{{tabs}}" as="tab">
         <li role="presentation" class$="{{isActive(tab)}}">
-          <a href="#{{tab.id}}" aria-controls="{{tab.id}}" role="tab" data-toggle="tab" on-click="handleClick" data-tab-id="{{tab.id}}">{{tab.name}}</a>
+          <a href="#" aria-controls="{{tab.id}}" role="tab" data-toggle="tab" on-click="handleClick" data-tab-id="{{tab.id}}">{{tab.name}}</a>
         </li>
       </template>
     </ul>
@@ -20,6 +20,8 @@
         return this.active === tab.id ? 'active' : ''
       },
       handleClick: function (event) {
+        event.preventDefault()
+
         this.setTabPaneActive(this.active, false)
         this.active = event.target.dataTabId
         this.setTabPaneActive(this.active, true)
