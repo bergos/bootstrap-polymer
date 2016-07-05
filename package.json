@@ -22,7 +22,7 @@
     "bootstrap": "^3.3.6",
     "jquery": "^2.0.0",
     "shelljs": "^0.7.0",
-    "vulcanize": "^1.14.8",
+    "vulcanize": "^1.14.8"
   },
   "devDependencies": {
     "webcomponents.js": "^0.7.22"
