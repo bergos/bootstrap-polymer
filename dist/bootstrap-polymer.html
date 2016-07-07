@@ -39,7 +39,7 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
 
 <dom-module id="bs-button-toggle" assetpath="/">
   <template>
-    <button id="button" class$="btn btn-{{type}} {{activeClass}}" data-toggle="button" aria-pressed="{{active}}"><content></content></button>
+    <button id="button" class$="btn btn-{{type}} {{activeClass}}" aria-pressed="{{active}}"><content></content></button>
   </template>
 
   <script>
@@ -55,15 +55,19 @@ d.parent(".dropdown-menu").length&&(d=d.closest("li.dropdown").addClass("active"
           value: 'default'
         }
       },
-      ready: function() {
-        this.activeClass = this.active ? 'active' : ''
-      },
       listeners: {
-        'click': 'updateActive',
+        'active-changed': 'updateActiveClass',
+        'click': 'toggle',
       },
-      updateActive: function() {
-        this.active = this.$.button.className.indexOf('active') === -1
+      ready: function() {
+        this.updateActiveClass()
+      },
+      toggle: function() {
+        this.active = !this.active
         this.fire('change', {active: this.active})
+      },
+      updateActiveClass: function() {
+        this.activeClass = this.active ? 'active' : ''
       }
     })
   </script>
