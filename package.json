@@ -4,7 +4,8 @@
   "description": "Basic Bootstrap Web Components implemented with Polymer",
   "main": "index.js",
   "scripts": {
-    "build-dist": "node build"
+    "build-dist": "node build",
+    "prepublish": "npm run build-dist"
   },
   "repository": {
     "type": "git",
